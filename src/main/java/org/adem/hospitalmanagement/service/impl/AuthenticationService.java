@@ -1,5 +1,8 @@
-package org.adem.hospitalmanagement.dto.auth;
+package org.adem.hospitalmanagement.service.impl;
 
+import org.adem.hospitalmanagement.dto.auth.AuthenticationRequest;
+import org.adem.hospitalmanagement.dto.auth.AuthenticationResponse;
+import org.adem.hospitalmanagement.dto.auth.RegisterRequest;
 import org.adem.hospitalmanagement.security.JWTService;
 import org.adem.hospitalmanagement.user.Role;
 import org.adem.hospitalmanagement.user.User;

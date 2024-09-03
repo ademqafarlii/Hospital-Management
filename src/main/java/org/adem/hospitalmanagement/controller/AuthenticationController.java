@@ -2,7 +2,7 @@ package org.adem.hospitalmanagement.controller;
 
 import org.adem.hospitalmanagement.dto.auth.AuthenticationRequest;
 import org.adem.hospitalmanagement.dto.auth.AuthenticationResponse;
-import org.adem.hospitalmanagement.dto.auth.AuthenticationService;
+import org.adem.hospitalmanagement.service.impl.AuthenticationService;
 import org.adem.hospitalmanagement.dto.auth.RegisterRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

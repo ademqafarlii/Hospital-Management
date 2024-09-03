@@ -1,0 +1,14 @@
+services:
+
+ mysql-bookmark:
+  container_name: hospital-management
+  image: mysql
+  environment:
+    MYSQL_DATABASE: hospital_management_system
+    MYSQL_USER: adem
+    MYSQL_PASSWORD: adem1234
+    MYSQL_ROOT_PASSWORD: root_password
+  volumes:
+    - ./mysql-hospital:/var/lib/mysql
+  ports:
+    - "3311:3306"

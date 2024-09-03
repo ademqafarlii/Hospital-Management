@@ -17,6 +17,8 @@ public class Bed {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bedNumber;
+
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @ManyToOne
