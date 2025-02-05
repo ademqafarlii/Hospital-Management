@@ -4,7 +4,6 @@ import org.adem.hospitalmanagement.dto.page.DoctorPageResponse;
 import org.adem.hospitalmanagement.dto.request.DoctorRequest;
 import org.adem.hospitalmanagement.dto.response.DoctorResponse;
 import org.adem.hospitalmanagement.enums.Specialization;
-import org.adem.hospitalmanagement.model.Department;
 
 public interface DoctorService {
 

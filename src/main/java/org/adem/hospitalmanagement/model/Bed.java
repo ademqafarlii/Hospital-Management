@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.adem.hospitalmanagement.enums.Status;
 
 @Data
@@ -22,7 +23,10 @@ public class Bed {
     private Status status;
 
     @ManyToOne
+    @JsonIgnore
     private Room room;
+
     @OneToOne
+    @JsonIgnore
     private Patient patient;
 }

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.adem.hospitalmanagement.enums.Gender;
 
 import java.time.LocalDateTime;
@@ -29,8 +30,10 @@ public class Patient {
     private String phoneNumber;
     private String email;
     private String medicalHistory;
-    @OneToMany
-    private List<Appointment> appointment;
-    private LocalDateTime dateOfBirth;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
+    @JsonIgnore
+    private List<Appointment> appointments;
+
+    private LocalDateTime dateOfBirth;
 }

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.adem.hospitalmanagement.dto.response.DoctorResponse;
 import org.adem.hospitalmanagement.dto.response.MedicationResponse;
 
 import java.util.List;

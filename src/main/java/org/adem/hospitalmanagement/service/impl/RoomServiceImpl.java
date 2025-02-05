@@ -40,7 +40,7 @@ public class RoomServiceImpl implements RoomService {
         }
         existingRoom.get().setRoomStatus(roomRequest.getRoomStatus());
         existingRoom.get().setDoctor(roomRequest.getDoctor());
-        existingRoom.get().setPatient(roomRequest.getPatient());
+        existingRoom.get().setPatients(roomRequest.getPatient());
         roomRepository.save(existingRoom.get());
     }
 
@@ -87,7 +87,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public RoomResponse getRoomByPatientId(Integer patientId) {
-        return roomRepository.findByPatient_Id(patientId)
+        return roomRepository.findByPatients_Id(patientId)
                 .stream()
                 .map(roomMapper::toRoomResponse)
                 .findFirst()
@@ -96,7 +96,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public RoomResponse getRoomByPatientFirstnameAndPatientLastname(String firstname, String lastname) {
-        return roomRepository.findByPatient_FirstNameAndPatient_LastName(firstname, lastname)
+        return roomRepository.findByPatients_FirstNameAndPatients_LastName(firstname, lastname)
                 .stream()
                 .map(roomMapper::toRoomResponse)
                 .findFirst()

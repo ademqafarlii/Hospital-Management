@@ -3,7 +3,6 @@ package org.adem.hospitalmanagement.controller;
 import org.adem.hospitalmanagement.dto.page.DepartmentPageResponse;
 import org.adem.hospitalmanagement.dto.request.DepartmentRequest;
 import org.adem.hospitalmanagement.dto.response.DepartmentResponse;
-import org.adem.hospitalmanagement.model.Department;
 import org.adem.hospitalmanagement.service.DepartmentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;

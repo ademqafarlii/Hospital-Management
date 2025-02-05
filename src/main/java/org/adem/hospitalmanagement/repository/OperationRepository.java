@@ -1,6 +1,5 @@
 package org.adem.hospitalmanagement.repository;
 
-import org.adem.hospitalmanagement.model.LabTest;
 import org.adem.hospitalmanagement.model.Operation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

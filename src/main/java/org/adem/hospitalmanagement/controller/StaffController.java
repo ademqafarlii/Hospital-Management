@@ -1,5 +1,6 @@
 package org.adem.hospitalmanagement.controller;
 
+import org.adem.hospitalmanagement.aop.customAnnotation.ConsoleLog;
 import org.adem.hospitalmanagement.dto.page.StaffPageResponse;
 import org.adem.hospitalmanagement.dto.request.StaffRequest;
 import org.adem.hospitalmanagement.dto.response.StaffResponse;
@@ -23,6 +24,7 @@ public class StaffController {
     @PostMapping("/add-staff-member")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("add staff member")
     public void addStaffMember(@RequestBody @Valid StaffRequest staffRequest) {
         staffService.addStaffMember(staffRequest);
     }
@@ -30,6 +32,7 @@ public class StaffController {
     @PatchMapping("/update-staff-member-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("update staff member by id")
     public void updateStaffMemberByID(@RequestBody @Valid StaffRequest staffRequest, @PathVariable Integer id) {
         staffService.updateStaffMemberByID(staffRequest, id);
     }
@@ -37,6 +40,7 @@ public class StaffController {
     @PatchMapping("/update-staff-member-by-firstname-and-lastname")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("update staff member by firstname and lastname")
     public void updateStaffMemberByFirstNameAndLastName(
             @RequestBody @Valid StaffRequest staffRequest, @RequestParam String firstName, @RequestParam String lastName) {
         staffService.updateStaffMemberByFirstNameAndLastName(staffRequest, firstName, lastName);
@@ -69,6 +73,7 @@ public class StaffController {
     @DeleteMapping("/delete-staff-member-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("delete staff member by id")
     public void deleteStaffMemberByID(@PathVariable Integer id) {
         staffService.deleteStaffMemberByID(id);
     }
@@ -76,6 +81,7 @@ public class StaffController {
     @DeleteMapping("/delete-staff-member-by-firstname-and-lastname")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("delete staff member by firstname and lastname")
     public void deleteStaffMemberByFirstNameAndLastName(@RequestParam String firstName,@RequestParam String lastName) {
         staffService.deleteStaffMemberByFirstNameAndLastName(firstName,lastName);
     }

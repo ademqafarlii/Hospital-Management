@@ -1,5 +1,6 @@
 package org.adem.hospitalmanagement.controller;
 
+import org.adem.hospitalmanagement.aop.customAnnotation.ConsoleLog;
 import org.adem.hospitalmanagement.dto.page.MedicationPageResponse;
 import org.adem.hospitalmanagement.dto.request.MedicationRequest;
 import org.adem.hospitalmanagement.dto.response.MedicationResponse;
@@ -22,6 +23,7 @@ public class MedicationController {
     @PostMapping("/add-medication")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("add medication")
     public void addMedication(@RequestBody @Valid MedicationRequest medicationRequest) {
         medicationService.addMedication(medicationRequest);
     }
@@ -29,6 +31,7 @@ public class MedicationController {
     @PatchMapping("/update-medication-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("update medication")
     public void updateMedicationById(@RequestBody @Valid MedicationRequest medicationRequest, @PathVariable Integer id) {
         medicationService.updateMedicationById(medicationRequest, id);
     }
@@ -50,6 +53,7 @@ public class MedicationController {
     @DeleteMapping("/delete-medication-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("delete medication")
     public void deleteMedicationByID(@PathVariable Integer id) {
     medicationService.deleteMedicationByID(id);
     }

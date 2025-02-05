@@ -1,5 +1,6 @@
 package org.adem.hospitalmanagement.controller;
 
+import org.adem.hospitalmanagement.aop.customAnnotation.ConsoleLog;
 import org.adem.hospitalmanagement.dto.page.PatientPageResponse;
 import org.adem.hospitalmanagement.dto.request.PatientRequest;
 import org.adem.hospitalmanagement.dto.response.PatientResponse;
@@ -22,6 +23,7 @@ public class PatientController {
     @PostMapping("/add-patient")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("add patient")
     public void addPatient(@RequestBody @Valid PatientRequest patientRequest) {
         patientService.addPatient(patientRequest);
     }
@@ -29,6 +31,7 @@ public class PatientController {
     @PatchMapping("/update-patient-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("update patient by id")
     public void updatePatientByID(@RequestBody @Valid PatientRequest patientRequest, @PathVariable Integer id) {
         patientService.updatePatientByID(patientRequest, id);
     }
@@ -36,6 +39,7 @@ public class PatientController {
     @PatchMapping("/update-patient-by-firstname-and-lastname")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("update patient by firstname and lastname")
     public void updatePatientByFirstNameAndLastName(
             @RequestBody @Valid PatientRequest patientRequest, @RequestParam String firstName, @RequestParam String lastName) {
         patientService.updatePatientByFirstNameAndLastName(patientRequest, firstName, lastName);
@@ -66,6 +70,7 @@ public class PatientController {
     @DeleteMapping("/delete-patient-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("delete patient by id")
     public void deletePatientByID(@PathVariable Integer id) {
         patientService.deletePatientByID(id);
     }
@@ -74,6 +79,7 @@ public class PatientController {
     @DeleteMapping("/delete-patient-by-id")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("delete patient by firstname and lastname")
     public void deletePatientByFirstNameAndLastName(@RequestParam String firstName, @RequestParam String lastName) {
         patientService.deletePatientByFirstNameAndLastName(firstName, lastName);
     }

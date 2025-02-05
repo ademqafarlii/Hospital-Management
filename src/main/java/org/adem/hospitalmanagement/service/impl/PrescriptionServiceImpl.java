@@ -5,9 +5,7 @@ import org.adem.hospitalmanagement.dto.request.PrescriptionRequest;
 import org.adem.hospitalmanagement.dto.response.PrescriptionResponse;
 import org.adem.hospitalmanagement.exception.PrescriptionNotFoundException;
 import org.adem.hospitalmanagement.mapper.PrescriptionMapper;
-import org.adem.hospitalmanagement.model.Doctor;
 import org.adem.hospitalmanagement.model.Prescription;
-import org.adem.hospitalmanagement.repository.DoctorRepository;
 import org.adem.hospitalmanagement.repository.PrescriptionRepository;
 import org.adem.hospitalmanagement.service.PrescriptionService;
 import org.springframework.data.domain.Page;
@@ -45,7 +43,7 @@ public class PrescriptionServiceImpl implements PrescriptionService {
         existingPrescription.get().setInstructions(prescriptionRequest.getInstructions());
         existingPrescription.get().setPatient(prescriptionRequest.getPatient());
         existingPrescription.get().setLocalDateTime(prescriptionRequest.getLocalDateTime());
-        existingPrescription.get().setMedication(prescriptionRequest.getMedication());
+        existingPrescription.get().setMedications(prescriptionRequest.getMedication());
         existingPrescription.get().setValid(prescriptionRequest.isValid());
 
         prescriptionRepository.save(existingPrescription.get());

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.adem.hospitalmanagement.enums.Status;
 
 import java.util.List;
@@ -22,9 +23,11 @@ public class Room {
     @Enumerated(EnumType.STRING)
     private Status roomStatus;
 
-    @OneToMany
-    private List<Patient> patient;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "room")
+    @JsonIgnore
+    private List<Patient> patients;
 
     @ManyToOne
+    @JsonIgnore
     private Doctor doctor;
 }

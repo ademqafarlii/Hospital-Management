@@ -1,7 +1,5 @@
 package org.adem.hospitalmanagement.dto.request;
 
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

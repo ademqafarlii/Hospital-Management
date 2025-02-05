@@ -27,7 +27,8 @@
         <url/>
     </scm>
     <properties>
-        <java.version>17</java.version>
+        <spring.boot.maven.plugin.version>3.3.2</spring.boot.maven.plugin.version>
+        <spring.boot.dependencies.version>3.3.2</spring.boot.dependencies.version>
     </properties>
     <dependencies>
         <dependency>
@@ -101,14 +102,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-       <!-- <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-        </dependency>-->
+
+
+
+
 
 
 
     </dependencies>
+
 
     <build>
         <plugins>
@@ -151,8 +153,32 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>${spring.boot.maven.plugin.version}</version>
+                <configuration>
+                    <from>
+                        <image>eclipse-temurin:17.0.4.1_1-jre</image>
+                    </from>
+                    <to>
+                        <image>ademqafarli1/hospital-management:latest</image>
+                    </to>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>dockerBuild</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
 
         </plugins>
     </build>
+
 
 </project>

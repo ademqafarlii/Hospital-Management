@@ -1,5 +1,6 @@
 package org.adem.hospitalmanagement.controller;
 
+import org.adem.hospitalmanagement.aop.customAnnotation.ConsoleLog;
 import org.adem.hospitalmanagement.dto.auth.AuthenticationRequest;
 import org.adem.hospitalmanagement.dto.auth.AuthenticationResponse;
 import org.adem.hospitalmanagement.service.impl.AuthenticationService;
@@ -18,12 +19,14 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
+    @ConsoleLog("register")
     public AuthenticationResponse register(@RequestBody RegisterRequest registerRequest){
         return authenticationService.register(registerRequest);
     }
 
     @PostMapping("/authenticate")
     @ResponseStatus(HttpStatus.OK)
+    @ConsoleLog("login")
     public AuthenticationResponse authenticate(@RequestBody AuthenticationRequest authenticationRequest){
         return authenticationService.authenticate(authenticationRequest);
     }

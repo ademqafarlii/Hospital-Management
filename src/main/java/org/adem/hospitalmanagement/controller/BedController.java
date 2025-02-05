@@ -1,5 +1,6 @@
 package org.adem.hospitalmanagement.controller;
 
+import org.adem.hospitalmanagement.aop.customAnnotation.ConsoleLog;
 import org.adem.hospitalmanagement.dto.page.BedPageResponse;
 import org.adem.hospitalmanagement.dto.request.BedRequest;
 import org.adem.hospitalmanagement.dto.response.BedResponse;
@@ -22,6 +23,7 @@ public class BedController {
     @PostMapping("/add-bed")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("add bed")
     public void addBed(@RequestBody BedRequest bedRequest) {
         bedService.addBed(bedRequest);
     }
@@ -29,6 +31,7 @@ public class BedController {
     @PatchMapping("/update-bed-by-bed-number/{bedNumber}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("update bed")
     public void updateBedByBedNumber(@RequestBody BedRequest bedRequest, @PathVariable Integer bedNumber) {
         bedService.updateBedByBedNumber(bedRequest, bedNumber);
     }
@@ -72,6 +75,7 @@ public class BedController {
     @DeleteMapping("/delete-bed-by-bed-number/{bedNumber}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("delete bed")
     public void deleteBedByBedNumber(@PathVariable Integer bedNumber) {
         bedService.deleteBedByBedNumber(bedNumber);
     }

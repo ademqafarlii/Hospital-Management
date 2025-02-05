@@ -6,7 +6,6 @@ import org.adem.hospitalmanagement.dto.response.AppointmentResponseDto;
 import org.adem.hospitalmanagement.exception.AppointmentNotFoundException;
 import org.adem.hospitalmanagement.mapper.AppointmentMapper;
 import org.adem.hospitalmanagement.model.Appointment;
-import org.adem.hospitalmanagement.model.Patient;
 import org.adem.hospitalmanagement.repository.AppointmentRepository;
 import org.adem.hospitalmanagement.service.AppointmentService;
 import org.springframework.data.domain.Page;

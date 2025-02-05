@@ -1,5 +1,6 @@
 package org.adem.hospitalmanagement.controller;
 
+import org.adem.hospitalmanagement.aop.customAnnotation.ConsoleLog;
 import org.adem.hospitalmanagement.dto.page.PrescriptionPageResponse;
 import org.adem.hospitalmanagement.dto.request.PrescriptionRequest;
 import org.adem.hospitalmanagement.dto.response.PrescriptionResponse;
@@ -22,6 +23,7 @@ public class PrescriptionController {
     @PostMapping("/add-prescription")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("add prescription")
     public void addPrescription(@RequestBody PrescriptionRequest prescriptionRequest) {
         prescriptionService.addPrescription(prescriptionRequest);
     }
@@ -29,6 +31,7 @@ public class PrescriptionController {
     @PatchMapping("/update-prescription-by-prescription-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("update prescription")
     public void updatePrescriptionByPrescriptionId(@RequestBody PrescriptionRequest prescriptionRequest, @PathVariable Integer id) {
         prescriptionService.updatePrescriptionByPrescriptionId(prescriptionRequest, id);
     }
@@ -58,6 +61,7 @@ public class PrescriptionController {
     @PostMapping("/validate-prescription/{prescriptionId}")
     @ResponseStatus
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @ConsoleLog("validate prescription")
     public Boolean validatePrescription(@PathVariable Integer prescriptionId) {
         return prescriptionService.validatePrescription(prescriptionId);
     }
@@ -65,6 +69,7 @@ public class PrescriptionController {
     @DeleteMapping("/delete-prescription-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("delete prescription")
     public void deletePrescriptionById(@PathVariable Integer id){
         prescriptionService.deletePrescriptionById(id);
     }

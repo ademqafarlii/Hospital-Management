@@ -1,5 +1,6 @@
 package org.adem.hospitalmanagement.controller;
 
+import org.adem.hospitalmanagement.aop.customAnnotation.ConsoleLog;
 import org.adem.hospitalmanagement.dto.page.AppointmentPageResponse;
 import org.adem.hospitalmanagement.dto.request.AppointmentRequestDto;
 import org.adem.hospitalmanagement.dto.response.AppointmentResponseDto;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-import static org.springframework.security.authorization.AuthorityReactiveAuthorizationManager.hasAnyRole;
 
 @RestController
 @RequestMapping("/hospital/appointment")
@@ -24,6 +24,7 @@ public class AppointmentController {
     @PostMapping("/add-appointment")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("add appointment")
     public void addAppointment(@RequestBody @Valid AppointmentRequestDto appointmentRequestDto) {
         appointmentService.addAppointment(appointmentRequestDto);
     }
@@ -46,6 +47,7 @@ public class AppointmentController {
     @DeleteMapping("/delete-appointment-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("delete appointment")
     public void deleteAppointmentById(@PathVariable Integer id) {
         appointmentService.deleteAppointmentById(id);
     }
@@ -53,6 +55,7 @@ public class AppointmentController {
     @PatchMapping("/update-appointment-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("update appointment")
     public void updateAppointmentById(@RequestBody @Valid AppointmentRequestDto appointmentRequestDto, @PathVariable Integer id) {
         appointmentService.updateAppointmentById(appointmentRequestDto, id);
     }

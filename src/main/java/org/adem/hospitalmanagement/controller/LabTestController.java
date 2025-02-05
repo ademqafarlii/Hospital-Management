@@ -1,5 +1,6 @@
 package org.adem.hospitalmanagement.controller;
 
+import org.adem.hospitalmanagement.aop.customAnnotation.ConsoleLog;
 import org.adem.hospitalmanagement.dto.page.LabTestPageResponse;
 import org.adem.hospitalmanagement.dto.request.LabTestRequest;
 import org.adem.hospitalmanagement.dto.response.LabTestResponse;
@@ -23,6 +24,7 @@ public class LabTestController {
     @PostMapping("/add-test")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("add lab test")
     public void addLabTest(@RequestBody @Valid LabTestRequest labTestRequest) {
         labTestService.addLabTest(labTestRequest);
     }
@@ -30,6 +32,7 @@ public class LabTestController {
     @PatchMapping("/update-test-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("update lab test")
     public void updateLabTestById(@RequestBody @Valid LabTestRequest labTestRequest, @PathVariable Integer id) {
         labTestService.updateLabTestById(labTestRequest, id);
     }
@@ -75,6 +78,7 @@ public class LabTestController {
     @DeleteMapping("/delete-test-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("delete lab test")
     public void deleteLabTestByID(@PathVariable Integer id) {
         labTestService.deleteLabTestByID(id);
     }

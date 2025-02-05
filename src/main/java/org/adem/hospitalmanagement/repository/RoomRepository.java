@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface RoomRepository extends JpaRepository<Room,Integer> {
     List<Room> findByDoctor_Id(Integer doctorId);
-    Optional<Room> findByPatient_Id(Integer patientId);
+    Optional<Room> findByPatients_Id(Integer patientId);
     List<Room> findByDoctor_FirstNameAndDoctor_LastName(String firstname, String lastname);
-    Optional<Room> findByPatient_FirstNameAndPatient_LastName(String firstname,String lastname);
+    Optional<Room> findByPatients_FirstNameAndPatients_LastName(String firstname, String lastname);
 }

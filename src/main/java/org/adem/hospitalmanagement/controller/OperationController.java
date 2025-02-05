@@ -1,5 +1,6 @@
 package org.adem.hospitalmanagement.controller;
 
+import org.adem.hospitalmanagement.aop.customAnnotation.ConsoleLog;
 import org.adem.hospitalmanagement.dto.page.OperationPageResponse;
 import org.adem.hospitalmanagement.dto.request.OperationRequest;
 import org.adem.hospitalmanagement.dto.response.OperationResponse;
@@ -24,6 +25,7 @@ public class OperationController {
     @PostMapping("/add-operation")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("add operation")
     public void addOperation(@RequestBody @Valid OperationRequest operationRequest) {
         operationService.addOperation(operationRequest);
     }
@@ -31,6 +33,7 @@ public class OperationController {
     @PatchMapping("/update-operation-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("update operation")
     public void updateOperationById(@RequestBody @Valid OperationRequest operationRequest, @PathVariable Integer id) {
         operationService.updateOperationById(operationRequest, id);
     }
@@ -75,6 +78,7 @@ public class OperationController {
     @DeleteMapping("/delete-operation-by-id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @ConsoleLog("delete operation")
     public void deleteOperationById(@PathVariable Integer id) {
         operationService.deleteOperationById(id);
     }
